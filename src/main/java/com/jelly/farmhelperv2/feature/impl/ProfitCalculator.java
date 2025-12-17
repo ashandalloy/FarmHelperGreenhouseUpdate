@@ -39,6 +39,7 @@ public class ProfitCalculator implements IFeature {
         final int ENCHANTED_TIER_1 = 160;
         final int ENCHANTED_TIER_2 = 25600;
 
+        add(new BazaarItem("Wheat", "ENCHANTED_WHEAT", ENCHANTED_TIER_1, 6).setImage());
         add(new BazaarItem("Hay Bale", "ENCHANTED_HAY_BALE", ENCHANTED_TIER_2, 6).setImage());
         add(new BazaarItem("Seeds", "ENCHANTED_SEEDS", ENCHANTED_TIER_1, 3).setImage());
         add(new BazaarItem("Carrot", "ENCHANTED_CARROT", ENCHANTED_TIER_1, 3).setImage());
@@ -57,9 +58,10 @@ public class ProfitCalculator implements IFeature {
         add(new BazaarItem("Squash", "SQUASH", 1, 75_000).setImage());
         add(new BazaarItem("Fermento", "FERMENTO", 1, 250_000).setImage());
         add(new BazaarItem("Burrowing Spores", "BURROWING_SPORES", 1, 1).setImage());
+        add(new BazaarItem("Helianthus", "HELIANTHUS", 1, 275_000).setImage());
     }};
-    public final List<String> cropsToCountList = Arrays.asList("Hay Bale", "Seeds", "Carrot", "Potato", "Melon", "Pumpkin", "Sugar Cane", "Cocoa Beans", "Nether Wart", "Cactus Green", "Red Mushroom", "Brown Mushroom");
-    public final List<String> rngToCountList = Arrays.asList("Cropie", "Squash", "Fermento", "Burrowing Spores");
+    public final List<String> cropsToCountList = Arrays.asList("Wheat", "Hay Bale", "Seeds", "Carrot", "Potato", "Melon", "Pumpkin", "Sugar Cane", "Cocoa Beans", "Nether Wart", "Cactus Green", "Red Mushroom", "Brown Mushroom");
+    public final List<String> rngToCountList = Arrays.asList("Cropie", "Squash", "Fermento", "Burrowing Spores", "Helianthus");
     private final Minecraft mc = Minecraft.getMinecraft();
     @Getter
     private final NumberFormat formatter = NumberFormat.getCurrencyInstance(new Locale("en", "US"));
@@ -95,6 +97,8 @@ public class ProfitCalculator implements IFeature {
 
     public static String getImageName(String name) {
         switch (name) {
+            case "Wheat":
+                return "ewheat.png";
             case "Hay Bale":
                 return "ehaybale.png";
             case "Seeds":
@@ -127,6 +131,8 @@ public class ProfitCalculator implements IFeature {
                 return "fermento.png";
             case "Burrowing Spores":
                 return "burrowingspores.png";
+            case "Helianthus":
+                return "helianthus.png";
             default:
                 throw new IllegalArgumentException("No image for " + name);
         }
